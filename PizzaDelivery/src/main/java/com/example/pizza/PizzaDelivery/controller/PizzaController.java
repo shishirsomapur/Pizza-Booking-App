@@ -1,4 +1,4 @@
-package com.example.pizza.PizzaDelivery;
+package com.example.pizza.PizzaDelivery.controller;
 
 
 import com.example.pizza.PizzaDelivery.model.NonVegPizza;

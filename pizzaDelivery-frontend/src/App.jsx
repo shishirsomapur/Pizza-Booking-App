@@ -6,6 +6,7 @@ import Menu from './components/Menu'
 import VegPizza from './components/VegPizza'
 import NonVegPizza from './components/NonVegPizza'
 import Cart from './components/Cart'
+import Signup from './components/Signup'
 
 const App = () => {
   const router = createBrowserRouter(
@@ -29,6 +30,10 @@ const App = () => {
       {
         path: '/cart',
         element: <><Navbar /><Cart /></>
+      },
+      {
+        path: '/signup',
+        element: <><Signup/></>
       }
     ]
   )
