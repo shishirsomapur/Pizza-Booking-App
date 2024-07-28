@@ -26,7 +26,7 @@ public class SecurityConfig {
 
         http.csrf(customizer -> customizer.disable())
                 .authorizeHttpRequests(request -> request
-                        .requestMatchers("register")
+                        .requestMatchers("register", "vegpizzas", "nonvegpizzas")
                         .permitAll()
                         .anyRequest()
                         .authenticated())

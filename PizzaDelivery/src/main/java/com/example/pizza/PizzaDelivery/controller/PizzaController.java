@@ -18,12 +18,12 @@ public class PizzaController {
     @Autowired
     PizzaService service;
 
-    @GetMapping("/vegpizzas")
+    @GetMapping("vegpizzas")
     public List<VegPizza> getVegPizzas() {
         return service.getVegPizzas();
     }
 
-    @GetMapping("/nonvegpizzas")
+    @GetMapping("nonvegpizzas")
     public List<NonVegPizza> getNonVegPizzas() {
         return service.getNonVegPizzas();
     }
