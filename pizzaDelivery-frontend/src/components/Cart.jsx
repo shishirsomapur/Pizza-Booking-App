@@ -39,10 +39,10 @@ const Cart = () => {
   }
 
   return (
-    <div className='flex flex-col w-[300px] h-[350px] ' >
+    <div className='flex flex-col w-[300px] h-[350px] fixed right-10' >
       <div className='p-3 bg-[#EFF2F5]'>Your Cart</div>
-      <div className='overflow-auto'>
-        {pizzas && pizzas.map(item =>
+      <div className='overflow-auto h-[206px]'>
+        {pizzas.length > 0 ? pizzas.map(item =>
           <div key={item.pid}>
             <div className=' p-3'>
               <div className='flex justify-between'>
@@ -51,20 +51,20 @@ const Cart = () => {
               </div>
               <div className='flex justify-end mt-5'>
                 <div className='flex w-[80px] justify-between'>
-                  <button className='text-2xl border rounded-full border-black h-[25px] w-[25px] flex items-center justify-center' onClick={() => handleDecrement(item.pid)} >-</button>
+                  <button className='text-2xl border rounded-full border-green-400 text-green-400 h-[25px] w-[25px] flex items-center justify-center' onClick={() => handleDecrement(item.pid)} >-</button>
                   {item.quantity}
-                  <button className='text-2xl border rounded-full border-black h-[25px] w-[25px] flex items-center justify-center' onClick={() => handleIncrement(item.pid)}>+</button>
+                  <button className='text-2xl border rounded-full border-green-400 text-green-400 h-[25px] w-[25px] flex items-center justify-center' onClick={() => handleIncrement(item.pid)}>+</button>
                 </div>
               </div>
             </div>
             <hr />
-          </div>
-        )}
+          </div>) : <div className='h-full text-3xl flex items-center justify-center'>Cart is Empty</div>}
       </div>
-      <div className='p-3 flex w-full justify-between bg-[#EFF2F5]'>
-        <p>Total</p> 
-        <p>&#8377;{total}</p>
-      </div>
+      {total != 0 ?
+        <div className='p-3 flex w-full justify-between bg-[#EFF2F5]'>
+          <p>Total</p>
+          <p>&#8377;{total}</p>
+        </div> : ""}
       <button className='bg-green-400 p-3'>Check Out</button>
     </div>
   )
