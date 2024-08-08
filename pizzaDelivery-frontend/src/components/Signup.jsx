@@ -36,7 +36,6 @@ const Signup = ({ onClose }) => {
     
   }
 
-
   return (
     <div className='fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center z-50 items-center' ref={modalRef} onClick={closeModal}>
       <div className='w-[500px] flex flex-col'>

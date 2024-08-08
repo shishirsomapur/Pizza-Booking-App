@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { addNonVegPizza } from '../slices/pizzaSlice';
+import { addPizza } from '../slices/pizzaSlice';
 import Cart from './Cart';
 
 const NonVegPizza = () => {
 
     const dispatch = useDispatch();
-    const orderedNonVegPizza = useSelector((state) => state.pizza.orderedNonVegPizza)
+    const pizzas = useSelector((state) => state.pizza.pizzas)
     const [nonVegPizza, setNonVegPizza] = useState(null)
     const [notification, setNotification] = useState(false)
     const [orderedPname, setOrderedPname] = useState(null)
@@ -23,8 +23,9 @@ const NonVegPizza = () => {
 
     const addToCart = (pid, pname) => {
         setOrderedPname(pname)
-        let pizza = nonVegPizza.filter(item => { if (item.pid == pid) return item })
-        dispatch(addNonVegPizza(pizza))
+        let pizza = nonVegPizza.filter(item => { if (item.pid == pid) return item }).flat().map(item => ({ ...item, quantity: 1, currentPrice: item.price }))
+        pizza = pizza[0]
+        dispatch(addPizza(pizza))
         setNotification(true);
         setTimeout(() => {
             setNotification(false)

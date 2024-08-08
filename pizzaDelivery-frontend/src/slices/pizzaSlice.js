@@ -3,19 +3,25 @@ import { createSlice } from '@reduxjs/toolkit';
 const pizzaSlice = createSlice({
   name: 'pizza',
   initialState: {
-    orderedVegPizza: [],
-    orderedNonVegPizza: []
+    pizzas: [],
+    flatPizzas: []
   },
   reducers: {
-    addVegPizza: (state, action) => {
-      state.orderedVegPizza.push(action.payload);
+    addPizza: (state, action) => {
+      const existingPizza = state.pizzas.find(pizza => pizza.pid === action.payload.pid)
+      if (existingPizza) {
+        existingPizza.quantity += 1
+        existingPizza.currentPrice = existingPizza.quantity * existingPizza.price
+      } else {
+        state.pizzas.push(action.payload)
+      }
     },
-    addNonVegPizza: (state, action) => {
-      state.orderedNonVegPizza.push(action.payload);
+    updatePizzaQuantity: (state, action) => {
+      state.pizzas = action.payload;
     },
   },
 });
 
-export const { addVegPizza, addNonVegPizza } = pizzaSlice.actions;
+export const { addPizza, updatePizzaQuantity } = pizzaSlice.actions;
 
 export default pizzaSlice.reducer;

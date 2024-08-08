@@ -1,47 +1,42 @@
-import { current } from '@reduxjs/toolkit'
-import React, { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import React, { useState, useEffect, useRef } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { addPizza, updatePizzaQuantity } from '../slices/pizzaSlice'
+import { Link } from 'react-router-dom'
 
 const Cart = () => {
-  const orderedVegPizza = useSelector((state) => state.pizza.orderedVegPizza)
-  const orderedNonVegPizza = useSelector((state) => state.pizza.orderedNonVegPizza)
 
-  const [pizzas, setPizzas] = useState([])
+  const pizzas = useSelector((state) => state.pizza.pizzas);
+  const dispatch = useDispatch()
+
   const [total, setTotal] = useState()
-
-  useEffect(() => {
-    updatePizzas()
-  }, [orderedVegPizza, orderedNonVegPizza])
 
   useEffect(() => {
     calculateTotal()
   }, [pizzas])
 
 
-  const updatePizzas = () => {
-    if (orderedVegPizza.length || orderedNonVegPizza.length) {
-      let orderedPizzas = orderedVegPizza.concat(orderedNonVegPizza).flat().map(item => ({ ...item, quantity: 1, currentPrice: item.price }))
-      setPizzas(orderedPizzas)
-    }
-  }
-
   const handleIncrement = (pid) => {
-    setPizzas(pizzas.map(item => item.pid === pid ? { ...item, quantity: item.quantity + 1, currentPrice: item.price * (item.quantity + 1) } : item))
+    const updatedPizzas = pizzas.map(item => item.pid === pid ? { ...item, quantity: item.quantity + 1, currentPrice: item.price * (item.quantity + 1) } : item)
+
+    dispatch(updatePizzaQuantity(updatedPizzas));
   }
 
   const handleDecrement = (pid) => {
-    setPizzas(pizzas.map(item => item.pid === pid ? { ...item, quantity: Math.max(item.quantity - 1, 0), currentPrice: (item.currentPrice / item.quantity) * (item.quantity - 1) } : item).filter(item => item.quantity > 0))
+    const updatedPizzas = pizzas.map(item => item.pid === pid ? { ...item, quantity: item.quantity - 1, currentPrice: (item.currentPrice / item.quantity) * (item.quantity - 1) } : item)
+      .filter(item => item.quantity > 0)
+
+    dispatch(updatePizzaQuantity(updatedPizzas))
   }
 
   const calculateTotal = () => {
-    let total = pizzas.reduce((acc, item) => acc + item.currentPrice, 0);
+    let total = pizzas.reduce((acc, item) => acc + item.currentPrice, 0)
     setTotal(total)
   }
 
   return (
-    <div className='flex flex-col w-[300px] h-[350px] fixed right-10' >
+    <div className='flex flex-col w-[350px] h-[350px] fixed right-10 shadow-xl' >
       <div className='p-3 bg-[#EFF2F5]'>Your Cart</div>
-      <div className='overflow-auto h-[206px]'>
+      <div className='overflow-y-scroll h-full'>
         {pizzas.length > 0 ? pizzas.map(item =>
           <div key={item.pid}>
             <div className=' p-3'>
@@ -51,7 +46,7 @@ const Cart = () => {
               </div>
               <div className='flex justify-end mt-5'>
                 <div className='flex w-[80px] justify-between'>
-                  <button className='text-2xl border rounded-full border-green-400 text-green-400 h-[25px] w-[25px] flex items-center justify-center' onClick={() => handleDecrement(item.pid)} >-</button>
+                  <button className='text-2xl border rounded-full border-green-400 text-green-400 h-[25px] w-[25px] flex items-center justify-center' onClick={() => handleDecrement(item.pid)}>-</button>
                   {item.quantity}
                   <button className='text-2xl border rounded-full border-green-400 text-green-400 h-[25px] w-[25px] flex items-center justify-center' onClick={() => handleIncrement(item.pid)}>+</button>
                 </div>
@@ -60,12 +55,9 @@ const Cart = () => {
             <hr />
           </div>) : <div className='h-full text-3xl flex items-center justify-center'>Cart is Empty</div>}
       </div>
-      {total != 0 ?
-        <div className='p-3 flex w-full justify-between bg-[#EFF2F5]'>
-          <p>Total</p>
-          <p>&#8377;{total}</p>
-        </div> : ""}
-      <button className='bg-green-400 p-3'>Check Out</button>
+      <Link to='/checkout'>
+        <button className='bg-green-400 w-full p-3 disabled: cursor-not-allowed'>CHECKOUT</button>
+      </Link>
     </div>
   )
 }

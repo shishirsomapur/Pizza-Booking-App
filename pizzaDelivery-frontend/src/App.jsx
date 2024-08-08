@@ -7,6 +7,7 @@ import VegPizza from './components/VegPizza'
 import NonVegPizza from './components/NonVegPizza'
 import Cart from './components/Cart'
 import Signup from './components/Signup'
+import Checkout from './components/Checkout'
 
 const App = () => {
   const router = createBrowserRouter(
@@ -34,6 +35,10 @@ const App = () => {
       {
         path: '/signup',
         element: <><Signup/></>
+      },
+      {
+        path: '/checkout',
+        element: <><Navbar/><Checkout/></>
       }
     ]
   )
