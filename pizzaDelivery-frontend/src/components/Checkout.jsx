@@ -75,7 +75,7 @@ const Checkout = () => {
                 </div>
 
                 <div className=' mt-8 w-[30%] flex items-center justify-center bg-zinc-200 flex-col fixed right-10 rounded-md'>
-                    <div className='font-bold w-[100%] flex justify-center p-2'>
+                    <div className='font-semibold w-[100%] flex justify-center p-2 '>
                         <h2>PRICE DETAILS</h2>
                     </div>
                     <div className='w-[100%] pt-5 pl-3 pr-3 flex justify-between'>
@@ -91,7 +91,7 @@ const Checkout = () => {
                         <h2 className='font-bold'>Grand Total <p>(including Tax & Charge)</p></h2>
                         <h2 className='font-bold'>&#8377; {total}</h2>
                     </div>
-                    <button className='bg-blue-500 w-[90%] m-5 p-3 rounded-md font-bold text-white' onClick={() => setAddressModal(true)}> PLACE ORDER</button>
+                    <button className='bg-blue-500 w-[95%] m-5 p-3 rounded-md font-bold text-white' onClick={() => setAddressModal(true)}> PLACE ORDER</button>
                 </div>
                 {addressModal && <Address onClose={() => setAddressModal(false)} />}
             </div>
@@ -101,4 +101,3 @@ const Checkout = () => {
 
 export default Checkout
 
-{/* bg-white text-gray-500 z-20 w-[35%] fixed right-0 top-36 */ }

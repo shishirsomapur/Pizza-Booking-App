@@ -36,7 +36,7 @@ const Cart = () => {
   return (
     <div className='flex flex-col w-[350px] h-[350px] fixed right-10 shadow-xl' >
       <div className='p-3 bg-[#EFF2F5]'>Your Cart</div>
-      <div className='overflow-y-scroll h-full'>
+      <div className='overflow-y-scroll bg-white h-full'>
         {pizzas.length > 0 ? pizzas.map(item =>
           <div key={item.pid}>
             <div className=' p-3'>
@@ -56,7 +56,7 @@ const Cart = () => {
           </div>) : <div className='h-full text-3xl flex items-center justify-center'>Cart is Empty</div>}
       </div>
       <Link to='/checkout'>
-        <button className='bg-green-400 w-full p-3 disabled: cursor-not-allowed'>CHECKOUT</button>
+        <button className='bg-green-400 w-full p-3 '>CHECKOUT</button>
       </Link>
     </div>
   )

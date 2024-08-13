@@ -1,6 +1,6 @@
 package com.example.pizza.PizzaDelivery.controller;
 
-import com.example.pizza.PizzaDelivery.model.User;
+import com.example.pizza.PizzaDelivery.model.Users;
 import com.example.pizza.PizzaDelivery.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,7 +17,7 @@ public class UserController {
     private UserService service;
 
     @PostMapping("register")
-    public User register(@RequestBody User user) {
+    public Users register(@RequestBody Users user) {
         return service.saveUser(user);
     }
 

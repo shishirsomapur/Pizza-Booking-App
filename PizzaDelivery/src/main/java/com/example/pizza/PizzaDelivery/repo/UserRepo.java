@@ -1,9 +1,9 @@
 package com.example.pizza.PizzaDelivery.repo;
 
-import com.example.pizza.PizzaDelivery.model.User;
+import com.example.pizza.PizzaDelivery.model.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepo extends JpaRepository<User, Integer> {
+public interface UserRepo extends JpaRepository<Users, Integer> {
 
-    User findByUsername(String username);
+    Users findByUsername(String username);
 }

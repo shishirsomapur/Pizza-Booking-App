@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom'
 
 const Menu = () => {
     return (
-        <div className='mt-4'>
+        <div className='mt-4 absolute top-16'>
             <h3 className=' flex items-center justify-center text-5xl'>PizzaPalace's Menu</h3>
 
             <div className='flex justify-center mt-16 relative '>
-                <div className='w-1/3 flex flex-col items-center justify-center relative'>
+                <div className='w-1/3 flex flex-col items-center justify-center z-10 relative'>
                     <img className="absolute opacity-15 invert z-50" src="src/assets/foodies.avif" alt="" />
                     <h3 className='text-2xl z-50'>Veg Pizza</h3>
                     <img className='h-64 w-64' src="src/assets/veg-pizza.jpg" alt="" />

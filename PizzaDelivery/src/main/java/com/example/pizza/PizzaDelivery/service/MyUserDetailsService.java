@@ -1,7 +1,7 @@
 package com.example.pizza.PizzaDelivery.service;
 
-import com.example.pizza.PizzaDelivery.model.User;
 import com.example.pizza.PizzaDelivery.model.UserPrincipal;
+import com.example.pizza.PizzaDelivery.model.Users;
 import com.example.pizza.PizzaDelivery.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,7 +18,7 @@ public class MyUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        User user = repo.findByUsername(username);
+        Users user = repo.findByUsername(username);
 
         if(user == null) {
             System.out.println("User 404");

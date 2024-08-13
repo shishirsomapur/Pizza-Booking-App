@@ -34,7 +34,7 @@ const VegPizza = () => {
     };
 
     return (
-        <div className='mt-3 p-4 flex flex-col flex-wrap justify-center'>
+        <div className='mt-3 p-4 flex flex-col flex-wrap justify-center absolute top-16'>
             <h1 className='text-5xl flex mb-8 '>Veg Pizza</h1>
             <div className='flex'>
                 <div className='flex flex-wrap w-[75%]'>
@@ -48,7 +48,7 @@ const VegPizza = () => {
                             <div>
                                 <button className='bg-orange-500 text-white rounded-full h-10 w-28 mt-4' onClick={() => addToCart(item.pid, item.pname)}>Add To Cart</button>
                                 {notification && (
-                                    <div className="fixed top-4 right-4 bg-green-500 text-white p-2 rounded shadow-lg transition-opacity duration-300">
+                                    <div className="fixed z-20 top-4 right-4 bg-green-500 text-white p-2 rounded shadow-lg transition-opacity duration-300">
                                         {orderedPname} added to the cart!
                                     </div>
                                 )}

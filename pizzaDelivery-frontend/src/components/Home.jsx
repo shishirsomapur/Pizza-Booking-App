@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Home = () => {
     return (
-        <div className='flex items-center justify-between mt-4 '>
+        <div className='absolute top-16 flex items-center justify-between mt-4 w-[100%]'>
             <div className='pl-6'>
                 <p className='pl-2 mb-2'>Are you hungry?</p>
                 <h1 className='text-6xl'>Don't wait</h1>
