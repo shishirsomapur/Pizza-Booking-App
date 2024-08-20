@@ -1,14 +1,16 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Signup from './Signup'
+import Login from './Login'
 import { BiSolidUserCircle } from "react-icons/bi"
 
 const Navbar = () => {
 
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false)
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false)
 
   useEffect(() => {
-  }, [isModalOpen])
+  }, [isSignUpModalOpen])
 
 
   return (
@@ -25,13 +27,14 @@ const Navbar = () => {
           <BiSolidUserCircle className='w-9 h-9 mr-2' />
           <div className='leading-4'>
             <p className='text-[12px] font-semibold'>MY ACCOUNT</p>
-            <button onClick={() => setIsModalOpen(true)}><Link className='text-[10px] mr-1 font-semibold'>Login</Link></button>
+            <button onClick={() => setIsLoginModalOpen(true)}><Link className='text-[10px] mr-1 font-semibold'>Login</Link></button>
             |
-            <button onClick={() => setIsModalOpen(true)}><Link className='text-[10px] ml-1 font-semibold'>Sign up</Link></button>
+            <button onClick={() => setIsSignUpModalOpen(true)}><Link className='text-[10px] ml-1 font-semibold'>Sign up</Link></button>
           </div>
         </div>
       </ul>
-      {isModalOpen && <Signup onClose={() => setIsModalOpen(false)} />}
+      {isSignUpModalOpen && <Signup onClose={() => setIsSignUpModalOpen(false)} />}
+      {isLoginModalOpen && <Login onClose={() => setIsLoginModalOpen(false)} />}
     </div>
   )
 }

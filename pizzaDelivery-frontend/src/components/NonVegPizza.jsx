@@ -38,7 +38,7 @@ const NonVegPizza = () => {
             <h1 className='text-5xl flex mb-8 '>Non Veg Pizza</h1>
             <div className='flex'>
                 <div className='flex flex-wrap w-[75%]'>
-                    {nonVegPizza ? nonVegPizza.map(item => <div key={item.pid} className='flex flex-col w-72 bg-color m-1'>
+                    {nonVegPizza ? nonVegPizza.map(item => <div key={item.pid} className='flex flex-col w-72 bg-color m-1 shadow-xl'>
                         <img src={item.pimage} className='w-full h-48' alt="" />
                         <div className='flex items-center justify-between  p-3'>
                             <div>
