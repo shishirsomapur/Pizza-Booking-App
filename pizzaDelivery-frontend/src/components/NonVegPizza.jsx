@@ -5,7 +5,7 @@ import Cart from './Cart';
 
 const NonVegPizza = () => {
 
-    const dispatch = useDispatch();
+    const dispatch = useDispatch()
     const pizzas = useSelector((state) => state.pizza.pizzas)
     const [nonVegPizza, setNonVegPizza] = useState(null)
     const [notification, setNotification] = useState(false)
@@ -14,7 +14,6 @@ const NonVegPizza = () => {
     useEffect(() => {
         nonVegPizzas()
     }, [])
-
 
     let nonVegPizzas = async () => {
         let response = await fetch("http://localhost:8080/nonvegpizzas")

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Home from './components/Home'
@@ -8,8 +8,13 @@ import NonVegPizza from './components/NonVegPizza'
 import Cart from './components/Cart'
 import Signup from './components/Signup'
 import Checkout from './components/Checkout'
+import Payment from './components/Payment'
+import Profile from './components/Profile'
+import Orders from './components/Orders'
+import TrackOrder from './components/TrackOrder'
 
 const App = () => {
+
   const router = createBrowserRouter(
     [
       {
@@ -34,18 +39,34 @@ const App = () => {
       },
       {
         path: '/signup',
-        element: <><Signup/></>
+        element: <><Signup /></>
       },
       {
         path: '/checkout',
-        element: <><Navbar/><Checkout/></>
+        element: <><Navbar /><Checkout /></>
+      },
+      {
+        path: '/payment',
+        element: <><Payment/></>
+      },
+      {
+        path: '/profile',
+        element: <><Profile/></>
+      },
+      {
+        path: '/orders',
+        element: <><Orders/></>
+      },
+      {
+        path: '/trackOrder',
+        element: <><TrackOrder/></>
       }
     ]
   )
 
   return (
     <div>
-        <RouterProvider router={router} />
+      <RouterProvider router={router} />
     </div>
   )
 }

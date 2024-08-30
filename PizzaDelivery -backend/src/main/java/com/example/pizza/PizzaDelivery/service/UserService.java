@@ -33,10 +33,21 @@ public class UserService {
     public String verify(Users user) {
         Authentication authentication = authManager
                 .authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
+        String token = null;
 
-        if(authentication.isAuthenticated())
-            return jwtService.generateToken(user.getUsername());
+//        if(authentication.isAuthenticated())
+//            return jwtService.generateToken(user.getUsername());
+//        else
+//            return "Login Failed";
+
+        if(authentication.isAuthenticated()) {
+            token =  jwtService.generateToken(user.getUsername());
+            Users verifiedUser = repo.findByUsername(user.getUsername());
+            System.out.println(token);
+            return token + ":" +verifiedUser.getId();
+        }
         else
             return "Login Failed";
     }
+
 }

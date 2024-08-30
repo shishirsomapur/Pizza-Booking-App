@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface NonVegPizzaRepo extends JpaRepository<NonVegPizza, Integer> {
+public interface NonVegPizzaRepo extends JpaRepository<NonVegPizza, String> {
 
 }

@@ -19,9 +19,12 @@ const pizzaSlice = createSlice({
     updatePizzaQuantity: (state, action) => {
       state.pizzas = action.payload;
     },
+    emptyPizza: (state) => {
+      state.pizzas = []
+    }
   },
 });
 
-export const { addPizza, updatePizzaQuantity } = pizzaSlice.actions;
+export const { addPizza, updatePizzaQuantity, emptyPizza } = pizzaSlice.actions;
 
 export default pizzaSlice.reducer;

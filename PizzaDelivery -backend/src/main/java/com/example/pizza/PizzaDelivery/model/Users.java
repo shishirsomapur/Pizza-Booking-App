@@ -1,6 +1,5 @@
 package com.example.pizza.PizzaDelivery.model;
 
-
 import jakarta.persistence.*;
 import lombok.Data;
 

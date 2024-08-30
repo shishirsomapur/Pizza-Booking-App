@@ -39,13 +39,14 @@ public class JwtService {
     public String generateToken(String username) {
         Map <String, Object> claims = new HashMap<>();
 
-        return Jwts.builder()
+        String Token = Jwts.builder()
                 .claims(claims)
                 .subject(username)
                 .issuedAt(new Date(System.currentTimeMillis()))
-                .expiration(new Date(System.currentTimeMillis() + 1000 * 60 *3))
+                .expiration(new Date(System.currentTimeMillis() + 1000 * 60 * 30))
                 .signWith(getKey(), SignatureAlgorithm.HS256)
                 .compact();
+        return Token;
     }
 
     public SecretKey getKey() {
@@ -76,7 +77,7 @@ public class JwtService {
         return (userName.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
 
-    private boolean isTokenExpired(String token) {
+    public boolean isTokenExpired(String token) {
         return extractExpiration(token).before(new Date());
     }
 

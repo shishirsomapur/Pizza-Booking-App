@@ -7,17 +7,9 @@ const Signup = ({ onClose }) => {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [registered, setRegistered] = useState(false)
-  const [isDisabled, setIsDisabled] = useState(true)
-
-  useEffect(() => {
-    if (username != "" && password != "") {
-      setIsDisabled(false)
-    } else {
-      setIsDisabled(true)
-    }
-  }, [username, password])
-
-
+  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isUsernameError, setIsUsernameError] = useState(false)
+  const [isPasswordError, setIsPasswordError] = useState(false)
 
   const closeModal = (event) => {
     if (modalRef.current == event.target) {
@@ -26,9 +18,26 @@ const Signup = ({ onClose }) => {
     }
   }
 
-  const handleSubmit = async (e) => {
+  useEffect(() => {
+    if (isSubmitted && username === "")
+      setIsUsernameError(true)
+    else
+      setIsUsernameError(false)
 
+    if (isSubmitted && password === "")
+      setIsPasswordError(true)
+    else
+      setIsPasswordError(false)
+  }, [username, password, isSubmitted])
+
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
+    setIsSubmitted(true)
+
+    if (username === "" || password === "")
+      return
+
     let newUser = {
       username: username,
       password: password
@@ -65,9 +74,11 @@ const Signup = ({ onClose }) => {
             <form className='flex flex-col z-40' onSubmit={handleSubmit} >
               <label htmlFor='username' className=' '>Username: </label>
               <input className='bg-slate-200 my-2 h-7 p-2' type="text" name="username" value={username} onChange={(e) => setUsername(e.target.value)} />
+              {isUsernameError && <p className='text-red-500 text-xs font-bold mb-2'>*Username is required</p>}
               <label htmlFor="password">Password: </label>
               <input className='bg-slate-200 my-2 h-7 p-2' type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-              <input className={`w-28 bg-slate-200 rounded my-3 ${isDisabled ? 'cursor-not-allowed' : 'cursor-pointer'}`} type="submit" value="submit" disabled={isDisabled} />
+              {isPasswordError && <p className='text-red-500 text-xs font-bold mb-2'>*Password is required</p>}
+              <input className="w-28 bg-slate-200 rounded my-3 cursor-pointer" type="submit" value="submit" />
             </form>
           }
         </div>
