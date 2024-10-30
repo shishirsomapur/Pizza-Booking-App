@@ -13,9 +13,10 @@ const Home = () => {
                 </Link>
             </div>
             <div className='md:w-1/2 flex justify-end'>
-                <img className="w-full max-w-md mx-auto md:mx-0" src="src/assets/pizza-home-image.png" alt="Pizza" />
+                <img className="w-full max-w-md mx-auto md:mx-0" src="/assets/pizza-home-image.png" alt="Pizza" />
             </div>
         </div>
+        
     );
 }
 

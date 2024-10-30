@@ -79,9 +79,9 @@ const Payment = () => {
             </div>
             <div className='absolute w-[100%] h-full flex md:flex-row flex-col'>
                 <div className=' mt-[53px] md:w-[75%] w-full flex flex-col items-center justify-between p-3 md:p-0 '>
-                    <div className='w-full pl-5 flex justify-between p-5 md:ml-[10px] mb-1 bg-white' onClick={() => handlePaymentSelection('Pay by any UPI App', 'src/assets/upi.png')}>
+                    <div className='w-full pl-5 flex justify-between p-5 md:ml-[10px] mb-1 bg-white' onClick={() => handlePaymentSelection('Pay by any UPI App', 'assets/upi.png')}>
                         <div className='flex items-center w-full'>
-                            <img className='w-[40px]' src="src/assets/upi.png" alt="UPI Icon" />
+                            <img className='w-[40px]' src="assets/upi.png" alt="UPI Icon" />
                             <p>Pay by any UPI App</p>
                         </div>
                         <input type="radio" name="payment" id="upi" />
@@ -127,7 +127,7 @@ const Payment = () => {
                     {selectedPayment.method ? (
                         <div className='flex items-center'>
                             {selectedPayment.icon == 'src/assets/upi.png' ?
-                                <img className='w-[40px]' src="src/assets/upi.png" alt="UPI Icon" /> : selectedPayment.icon
+                                <img className='w-[40px]' src="assets/upi.png" alt="UPI Icon" /> : selectedPayment.icon
                             }
                             <p className=''>{selectedPayment.method}</p>
                         </div>
