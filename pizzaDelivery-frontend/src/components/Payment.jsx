@@ -77,45 +77,47 @@ const Payment = () => {
             <div className=' border border-b-2 fixed w-full bg-white'>
                 <p className='p-[10px] pl-10 font-semibold text-lg'>Payment Options</p>
             </div>
-            <div className='absolute mt-[53px] w-[75%]'>
-                <div className='pl-5 flex justify-between p-5 ml-[10px] mb-1 bg-white' onClick={() => handlePaymentSelection('Pay by any UPI App', 'src/assets/upi.png')}>
-                    <div className='flex items-center w-full'>
-                        <img className='w-[40px]' src="src/assets/upi.png" alt="UPI Icon" />
-                        <p>Pay by any UPI App</p>
+            <div className='absolute w-[100%] h-full flex md:flex-row flex-col'>
+                <div className=' mt-[53px] md:w-[75%] w-full flex flex-col items-center justify-between p-3 md:p-0 '>
+                    <div className='w-full pl-5 flex justify-between p-5 md:ml-[10px] mb-1 bg-white' onClick={() => handlePaymentSelection('Pay by any UPI App', 'src/assets/upi.png')}>
+                        <div className='flex items-center w-full'>
+                            <img className='w-[40px]' src="src/assets/upi.png" alt="UPI Icon" />
+                            <p>Pay by any UPI App</p>
+                        </div>
+                        <input type="radio" name="payment" id="upi" />
                     </div>
-                    <input type="radio" name="payment" id="upi" />
+                    <div className='w-full pl-5 flex justify-between p-5 md:ml-[10px] bg-white' onClick={() => handlePaymentSelection('Cash on Delivery', <HiOutlineCurrencyRupee className='w-5 h-5 m-2 mr-3' />)} >
+                        <div className='flex items-center w-full'>
+                            <HiOutlineCurrencyRupee className='w-5 h-5 m-2 mr-3' />
+                            <p>Cash on Delivery</p>
+                        </div>
+                        <input type="radio" name="payment" id="cod" />
+                    </div>
                 </div>
-                <div className='pl-5 flex justify-between p-5 ml-[10px] bg-white' onClick={() => handlePaymentSelection('Cash on Delivery', <HiOutlineCurrencyRupee className='w-5 h-5 m-2 mr-3' />)} >
-                    <div className='flex items-center w-full'>
-                        <HiOutlineCurrencyRupee className='w-5 h-5 m-2 mr-3' />
-                        <p>Cash on Delivery</p>
-                    </div>
-                    <input type="radio" name="payment" id="cod" />
-                </div>
-            </div>
-            <div className='absolute mt-[53px] right-0 w-[23%] mr-3'>
-                <div>
-                    <div className='bg-white p-2 mb-3'>
-                        <div className='flex items-center'>
-                            <MdLocationOn className='mr-1 text-red-600 text-sm' />
-                            <p>Deliver to</p>
+                <div className='ml-3 md:mt-[53px] right-0 md:w-[23%] mr-3 md:mr-0'>
+                    <div>
+                        <div className='bg-white p-2 mb-3 '>
+                            <div className='flex items-center'>
+                                <MdLocationOn className='mr-1 text-red-600 text-sm' />
+                                <p>Deliver to</p>
+                            </div>
+                            <p className='pl-5 text-slate-500 text-base'>{homeNumber}, {address}</p>
+                            <hr />
+                            <div className='flex items-center mt-2 text-sm'>
+                                <GoClock className='mr-2' />
+                                <p>Delivery Now</p>
+                            </div>
                         </div>
-                        <p className='pl-5 text-slate-500 text-base'>{homeNumber}, {address}</p>
-                        <hr />
-                        <div className='flex items-center mt-2 text-sm'>
-                            <GoClock className='mr-2' />
-                            <p>Delivery Now</p>
-                        </div>
-                    </div>
-                    <div className='bg-white p-2 mb-3'>
-                        <p className='font-semibold'>Price Details</p>
-                        <div className='pt-2 pb-2 text-xs flex items-center justify-between'>
-                            <p>Sub Total ({totalItems} item)</p>
-                            <p>&#8377;{totalPrice}</p>
-                        </div>
-                        <div className='pt-2 pb-2 mt-1 text-xs font-bold flex items-center justify-between'>
-                            <p>Grand Total</p>
-                            <p>&#8377;{totalPrice}</p>
+                        <div className='bg-white p-2 mb-3'>
+                            <p className='font-semibold'>Price Details</p>
+                            <div className='pt-2 pb-2 text-xs flex items-center justify-between'>
+                                <p>Sub Total ({totalItems} item)</p>
+                                <p>&#8377;{totalPrice}</p>
+                            </div>
+                            <div className='pt-2 pb-2 mt-1 text-xs font-bold flex items-center justify-between'>
+                                <p>Grand Total</p>
+                                <p>&#8377;{totalPrice}</p>
+                            </div>
                         </div>
                     </div>
                 </div>

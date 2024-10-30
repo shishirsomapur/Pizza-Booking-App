@@ -74,7 +74,7 @@ const Login = ({ onClose }) => {
 
   return (
     <div className='fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center z-50 items-center' ref={modalRef} onClick={closeModal}>
-      <div className='w-[500px] flex flex-col'>
+      <div className='w-[300px] md:w-[500px] flex flex-col'>
         <div className='bg-white p-2 rounded'>
           {loginStatus === null && (
             <form className='flex flex-col z-40' onSubmit={handleSubmit}>

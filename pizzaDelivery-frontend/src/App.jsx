@@ -12,6 +12,7 @@ import Payment from './components/Payment'
 import Profile from './components/Profile'
 import Orders from './components/Orders'
 import TrackOrder from './components/TrackOrder'
+import Footer from './components/Footer'
 
 const App = () => {
 
@@ -19,11 +20,11 @@ const App = () => {
     [
       {
         path: '/',
-        element: <><Navbar /><Home /></>
+        element: <><Navbar /><Home /><Footer /></>
       },
       {
         path: '/menu',
-        element: <><Navbar /><Menu /></>
+        element: <><Navbar /><Menu /><Footer /></>
       },
       {
         path: '/vegpizza',
@@ -47,25 +48,25 @@ const App = () => {
       },
       {
         path: '/payment',
-        element: <><Payment/></>
+        element: <><Payment /></>
       },
       {
         path: '/profile',
-        element: <><Profile/></>
+        element: <><Profile /></>
       },
       {
         path: '/orders',
-        element: <><Orders/></>
+        element: <><Orders /></>
       },
       {
         path: '/trackOrder',
-        element: <><TrackOrder/></>
+        element: <><TrackOrder /></>
       }
     ]
   )
 
   return (
-    <div>
+    <div className='absolute w-full h-full'>
       <RouterProvider router={router} />
     </div>
   )

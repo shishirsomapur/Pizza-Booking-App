@@ -34,7 +34,7 @@ const Cart = () => {
   }
 
   return (
-    <div className='flex flex-col w-[350px] h-[350px] fixed right-10 shadow-xl bg-white' >
+    <div className='flex-col w-[350px] h-[350px] fixed right-10 shadow-xl bg-white hidden xl:flex' >
       {pizzas.length > 0 ? <div>
         <div className='p-3 bg-[#EFF2F5]'>Your Cart</div>
         <div className='overflow-y-scroll bg-white h-[16rem]'>
@@ -47,9 +47,9 @@ const Cart = () => {
                 </div>
                 <div className='flex justify-end mt-5'>
                   <div className='flex w-[80px] justify-between'>
-                    <button className='text-2xl border rounded-full border-green-400 text-green-400 h-[25px] w-[25px] flex items-center justify-center' onClick={() => handleDecrement(item.pid)}>-</button>
+                    <button className='text-2xl border rounded-full border-black h-[25px] w-[25px] flex items-center justify-center' onClick={() => handleDecrement(item.pid)}>-</button>
                     {item.quantity}
-                    <button className='text-2xl border rounded-full border-green-400 text-green-400 h-[25px] w-[25px] flex items-center justify-center' onClick={() => handleIncrement(item.pid)}>+</button>
+                    <button className='text-2xl border rounded-full border-black h-[25px] w-[25px] flex items-center justify-center' onClick={() => handleIncrement(item.pid)}>+</button>
                   </div>
                 </div>
               </div>
@@ -57,7 +57,7 @@ const Cart = () => {
             </div>)}
         </div>
         <Link to='/checkout'>
-          <button className='bg-green-400 w-full p-3 '>CHECKOUT</button>
+          <button className='bg-orange-400 w-full p-3 text-white '>CHECKOUT</button>
         </Link>
       </div> :
         <div className='flex items-center justify-center flex-col'>
