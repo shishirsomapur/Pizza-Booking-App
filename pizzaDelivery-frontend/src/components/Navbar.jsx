@@ -14,7 +14,7 @@ const Navbar = () => {
     <div className='flex justify-between items-center px-5 py-2 w-full fixed top-0 z-20 bg-white'>
       <div>
         <Link className='flex items-center text-2xl' to='/'>
-          <img src="src/assets/PizzaPalace-logo.png" width="40px" height="40px" alt="PizzaPalace Logo" />
+          <img src="src/assets/pizza-logo.png" width="40px" height="40px" alt="PizzaPalace Logo" />
           <p className='ml-2'>PizzaPalace</p>
         </Link>
       </div>
